@@ -1,12 +1,14 @@
-.bg-img{
-    /* min-width: 320px;
-  min-height: 100vh; */
-  /* background-image: url('../blob.svg'); */
-  /* background-size: cover;
-  background-repeat: no-repeat; */
+/* .bg-img{
+    min-width: 320px;
+  min-height: 100vh;
+  background-image: url('../blob.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin:30px;
+  margin-left: 500px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-self: center;
+  align-self: center;
   z-index: 5;
   background: rgba(53, 53, 56, 0.2);
 border-radius: 16px;
@@ -14,12 +16,64 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(5px);
 -webkit-backdrop-filter: blur(5px);
 border: 1px solid rgba(53, 53, 56, 0.3);
-}
-.blob2{
-    height:750px;
-    width:750px;
+} */
+/* .blob2{
+    height:250px;
+    width:250px;
     z-index: -10;
-   /* margin-left:-160px;
-  margin-top: -120px; */
+   
 
-}
+} */
+
+
+
+
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(
+      180deg,
+      rgba(47, 184, 255,0.42) 31.77%,
+      #5c9df1 100%
+    );
+    mix-blend-mode: color-dodge;
+    -webkit-animation: move 25s infinite alternate;
+            animation: move 25s infinite alternate;
+    transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
+  }
+  
+  @-webkit-keyframes move {
+    from {
+      transform: translate(-100px, -50px) rotate(-90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(500px, 100px) rotate(-10deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }
+  
+  @keyframes move {
+    from {
+      transform: translate(-100px, -50px) rotate(-90deg);
+      border-radius: 24% 76% 35% 65% / 27% 36% 64% 73%;
+    }
+  
+    to {
+      transform: translate(500px, 100px) rotate(-10deg);
+      border-radius: 76% 24% 33% 67% / 68% 55% 45% 32%;
+    }
+  }

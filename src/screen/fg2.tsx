@@ -1,6 +1,6 @@
 
 import './fg2.styles.css';
-import { SignupForm } from '../components/signupForm/signupForm';
+import { SignupForm } from '../signupForm/signupForm';
 import Foregound1 from './foregound1';
 
 const Foregound2 = () => {

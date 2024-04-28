@@ -1,5 +1,7 @@
 import React from 'react';
 import './signupForm.styles.css';
+import blob2 from '../blob.svg';
+import Foregound1 from '../screen/foregound1';
 
 
 
@@ -10,6 +12,10 @@ export function SignupForm() {
   };
 
   return (
+   
+    
+		<div className="container">
+     <div className='main'>
     <div className="signup-form-container">
       <h2 className="signup-form-title">Sign Up for Our Service</h2>
       <p className="signup-form-subtitle">
@@ -63,6 +69,10 @@ export function SignupForm() {
         </button>
       </form>
     </div>
+    
+    </div>
+    <div className="blob"></div>
+  </div>
   );
 }
 
