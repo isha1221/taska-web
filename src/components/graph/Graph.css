@@ -1,0 +1,10 @@
+/* .css-xyaj9i-MuiMarkElement-root{
+    fill: transparent!important;
+    stroke: rgb(255,0,106)!important;
+    stroke-width: 2;
+} */
+.MuiChartsLegend-mark{
+ display: none!important;
+ background-color: transparent!important;
+ color: transparent!important;
+}

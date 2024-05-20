@@ -1,0 +1,152 @@
+/* .mainNav{
+display: flex;
+justify-content: center;
+margin-top: 2vh;
+
+}
+
+.navbar {
+    position: relative;
+    background-color: transparent;
+    
+    padding: 10px 20px;
+    width: 70vh;
+    transition: position 0.3s;
+   border-radius:50px ;
+   border: 2px solid rgb(91, 89, 89);
+  }
+
+  .navbar a:hover{
+    color: rgb(255,0,106);
+  }
+  
+  .navbar:hover{
+    border: 2px solid rgb(255,0,106);
+ 
+  }
+  
+  .navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+   */
+
+   .mainNav{
+    display: flex;
+    justify-content: center;
+    margin-top: 2vh;
+    
+    }
+   .navbar {
+    position: relative;
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    width: auto;
+    transition: position 0.3s;
+    border-radius:50px ;
+    border: 2px solid rgb(91, 89, 89);
+    display: flex;
+  }
+
+ .navbar:hover{
+    border: 2px solid rgb(255,0,106);
+    
+  }
+  
+  .navbar-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+  }
+
+  .navbar a:hover{
+    color: rgb(255,0,106);
+  }
+  
+  /* .sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  } */
+  
+  .hamburger-menu {
+    position: relative;
+  }
+  
+  .hamburger-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 10px;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 50px; /* Adjust depending on navbar height */
+    right: 0;
+    background-color: transparent;
+    border: 2px solid rgb(255,0,106);
+    z-index: 1001;
+    
+    border-radius: 15px;
+    /* From https://css.glass */
+background: rgba(255, 0, 106, 0.2);
+
+
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+
+
+  }
+  
+ .dropdown-menu:hover{
+    border: 2px solid rgb(255,0,106);
+ }
+
+  .dropdown-menu ul {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .dropdown-menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 5px 10px;
+  }
+  
+ 
+  

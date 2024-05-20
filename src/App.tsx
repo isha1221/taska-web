@@ -1,28 +1,29 @@
-
 import './App.css';
-
-import { SignupForm } from "./signupForm/signupForm"
-import Foregound2 from './screen/fg2';
-import Foregound1 from './screen/foregound1';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
+import ProfilePage from './pages/profilePage/ProfilePage';
+import FriendList from './pages/friendListPage/friend_list';
+import { LoginForm } from "./pages/loginPage/login";
+import { SignupForm } from "./pages/signupPage/signupForm";
+import Task from './pages/taskPage/Task';
+import Navbar from './components/Navbar/navbar';
+import Dashboard from './pages/dashboard/dashboard';
+import HomeLayout from './layouts/homeLayout/homeLayout';
 
 function App() {
-  
-
   return (
-    <>
-    {/* <Foregound1></Foregound1> */}
-     <SignupForm></SignupForm>
- 
-        
-    </>
-  )
+    <BrowserRouter>
+       <Routes>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignupForm />} />
+          <Route path='/app' element={<HomeLayout></HomeLayout>}>
+            <Route path="task" element={<Task />} index/>
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="friends" element={<FriendList />} />
+            <Route path="dashboard" element={<Dashboard/>} />
+          </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
-
-
-
-//button
-{/* <button onClick={() => setCount((count) => count + 1)}>
-count is {count}
-</button> */}
+export default App;

@@ -1,0 +1,112 @@
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+/* Modal styles */
+.modal {
+  /* From https://css.glass */
+  background: rgba(14, 14, 55, 0.44);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(14, 14, 55, 0.85);
+  color: var(--text-color);
+  padding: 20px;
+  /* border-radius: 8px; */
+
+  width: 600px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal header styles */
+.modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Close button styles */
+.close-button {
+  margin-top: auto;
+  cursor: pointer;
+}
+
+/* Modal content styles */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+}
+
+
+
+
+.button1,
+.button2 {
+  position: relative;
+  width: 90%;
+  padding: 10px;
+  background: var(--background-color);
+  color: var(--text-color);
+
+  border-radius: 16px;
+  /* box-sizing: border-box; */
+}
+
+.button2:hover {
+  /* From https://css.glass */
+  /* From https://css.glass */
+  background: rgba(255, 0, 106, 0.41);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 0, 106, 0.3);
+}
+
+.button1:hover {
+  border: 2px solid var(--primary-color);
+}
+
+.main_box {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  
+}
+
+
+
+.main_box:hover ,.ql-toolbar.ql-snow:hover {
+  border: 2px solid var(--primary-color);
+}
+
+.ql-toolbar.ql-snow{
+  color:#fff ;
+}
+
+.ql-snow .ql-picker-label{
+  color:var(--primary-color)
+}
+
+.ql-snow.ql-toolbar button{
+  color: aqua;
+  /* background: pink; */
+}
+.ql-snow .ql-toolbar button svg {
+  fill: aqua !important; /* Defines the fill color for SVG shapes */
+}

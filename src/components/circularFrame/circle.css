@@ -1,0 +1,25 @@
+@keyframes pulse {
+    0% { box-shadow:0 0 8px rgb(234, 100, 156), inset 0 0 8px rgb(255, 0, 106); }
+    50% { box-shadow:0 0 16px rgb(145, 7, 65), inset 0 0 14px rgb(255, 0, 106); }
+    100% { box-shadow:0 0 8px rgb(255, 0, 106), inset 0 0 8px rgb(255, 0, 106); }
+  }
+  
+  
+  
+  .inner {
+    z-index: 100;  
+    background-color:transparent;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    box-shadow: 0 0 8px rgb(255, 0, 106), inset 0 0 8px rgb(255, 0, 106);
+    -webkit-animation: pulse 2s linear 1s infinite;
+     
+}
+  .profile_img{
+    display: flex;
+object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    
+  }
