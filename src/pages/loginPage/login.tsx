@@ -6,6 +6,7 @@ import axios from 'axios'; // Import axios
 import { useNavigate } from 'react-router-dom'; // For redirection
 
 import './login.styles.css';
+import { setCookie } from '../utils/cookies';
 
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -26,13 +27,15 @@ export function LoginForm() {
       const response = await axios.post('https://tr0sfbtq-6969.inc1.devtunnels.ms/user/login', {
         email,
         password,
+      },
+      {
+        withCredentials: true, // Include this to ensure cookies are sent and received
       });
 
-      const { token } = response.data; // Extract the JWT token from the response
-      localStorage.setItem('authToken', token); // Store the JWT token
+      setCookie(response.data.id)
 
       // Redirect to a different page upon successful login
-      navigate('/profile');
+      navigate('/app/profile');
     } catch (error: any) {
       // Check if the error is from the server or network-related
       if (error.response) {

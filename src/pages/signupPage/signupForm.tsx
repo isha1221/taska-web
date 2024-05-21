@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'; // For redirection
 import './signupForm.styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { setCookie } from '../utils/cookies';
 
 export function SignupForm() {
   const [formData, setFormData] = useState({
@@ -78,10 +79,9 @@ export function SignupForm() {
        
       });
 
-      // If successful, get the JWT token and redirect
-      const { token } = response.data;
-      localStorage.setItem('authToken', token); // Store JWT token
-      navigate('/profile'); // Redirect to the profile page
+      setCookie(response.data.id)//cookies set
+      
+      navigate('/app/profile'); // Redirect to the profile page
     } catch (error: any) {
       if (error.response) {
         // Handle specific error messages from the backend
