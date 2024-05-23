@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 const Task = () => {
     
   return (
-    <div className='relative w-full h-screen '>
+    <div className='relative w-full h-full '>
       
     <Background></Background>
     <Foreground></Foreground>

@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import dayjs, { Dayjs } from 'dayjs';
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import "./modal.css";
 import { Grid } from "@mui/material";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateTimeField } from '@mui/x-date-pickers/DateTimeField';
 
 const Modal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
   isOpen,
@@ -11,13 +15,15 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
   const [description, setDescription] = useState<string>("");
   const toolbarOptions = [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
-    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["bold", "italic", "underline", "strike"],
     ["blockquote", "code-block"],
     ["link", "image"],
     [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
   ];
 
   const quillRef = useRef<HTMLDivElement>(null);
+  const [startTime, setStartTime] = useState<Dayjs | null>(dayjs());
+  const [endTime, setEndTime] = useState<Dayjs | null>(dayjs());
 
   useEffect(() => {
     if (isOpen && quillRef.current) {
@@ -41,19 +47,32 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
         <div className="input-field">
           <input id="username" type="text" placeholder="Add Title" />
         </div>
-
-        <div ref={quillRef} style={{ height: "400px" }} className="main_box" />
-        <Grid container justifyContent={"space-between"} sx={{marginTop:'30px'}}>
+        <div ref={quillRef} style={{ height: "200px" }} className="main_box" />
+        <div className="input-field">
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateTimeField
+              label="Start Time"
+              value={startTime}
+              onChange={(newValue) => setStartTime(newValue)}
+              className="date-time-field"
+            />
+            <DateTimeField
+              label="End Time"
+              value={endTime}
+              onChange={(newValue) => setEndTime(newValue)}
+              className="date-time-field"
+            />
+          </LocalizationProvider>
+        </div>
+        <Grid container justifyContent={"space-between"} sx={{ marginTop: '30px' }}>
           <Grid xs={6} item>
-            <button className="button1" type="submit">
+            <button className="button1" type="button" onClick={onClose}>
               Close
-              <div />
             </button>
           </Grid>
           <Grid xs={6} item display={"flex"} justifyContent={"center"}>
             <button className="button2" type="submit">
               Save
-              <div />
             </button>
           </Grid>
         </Grid>

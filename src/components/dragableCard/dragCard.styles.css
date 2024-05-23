@@ -11,7 +11,7 @@ body {
 
 /* Form Container */
 .login-form-container {
-  width: 40vh;
+  width: auto;
   margin: auto;
   padding: 10px 20px;
   position: relative;
@@ -71,7 +71,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   transition: border-color 0.3s;
-  height: 25vh;
+  height: auto
 }
 
 .input-bottom-gradient {

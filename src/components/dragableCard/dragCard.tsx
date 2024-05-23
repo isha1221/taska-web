@@ -43,12 +43,12 @@ const DragCard: React.FC<DragCardProps> = ({ dragConstraintsRef }) => {
   }, []);
 
   return (
-    <motion.div drag dragConstraints={dragConstraintsRef} className="login-form-container" ref={cardRef} onMouseDown={handleMouseDown}>
-      <h2 className="login-form-title">Task Heading!</h2>
+    <div  className="login-form-container" >
+      {/* <h2 className="login-form-title">Task Heading!dfgfhjkjkhchc dxhgddychkyf dfftstyddj </h2> */}
       <form className="login-form">
         <div className="input-field">
           <Box className="input">
-            Add description here.....
+          Task Heading!
           </Box>
           <div className="input-bottom-gradient" />
         </div>
@@ -70,7 +70,7 @@ const DragCard: React.FC<DragCardProps> = ({ dragConstraintsRef }) => {
           </Grid>
         </Grid>
       </form>
-    </motion.div>
+    </div>
   );
 };
 
