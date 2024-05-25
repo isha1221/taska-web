@@ -1,39 +1,39 @@
-// useUserStore.ts
-import { create } from "zustand";
-import { devtools } from "zustand/middleware";
+// src/stores/useTasksStore.ts
+import create from 'zustand';
+ // Adjust the import path as needed
+import axios from 'axios';
+import { Base_Url } from '../config/api.config';
+import { Task } from '../components/forground/Foreground';
 
-export interface TaskState {
-  userId: number;
-  taskTitle:string;
-  taskDescription: string;
-  status:string;
-  startTime:string;
-  endTime:string;
-};
-
-export type TaskListState = TaskState[];
-
-type TaskListStore = {
-  tasks: TaskListState | null;
+interface TasksState {
+  tasks: Task[];
   loading: boolean;
   error: string | null;
-  setTasks: (tasks: TaskListState) => void;
+  fetchTasks: () => void;
+  setTasks: (tasks: Task[]) => void;
   setLoading: (loading: boolean) => void;
-  setError: (error: string) => void;
-};
+  setError: (error: string | null) => void;
+}
 
-const useTaskListStore = create<TaskListStore>()(
-  devtools(
-    (set) => ({
-      tasks: null,
-      loading: false,
-      error: null,
-      setTasks: (tasks) => set({ tasks }),
-      setLoading: (loading) => set({ loading }),
-      setError: (error) => set({ error }),
-    }),
-    { name: "TaskStore" }
-  )
-);
+const useTasksStore = create<TasksState>((set) => ({
+  tasks: [],
+  loading: false,
+  error: null,
+  fetchTasks: async () => {
+    set({ loading: true, error: null });
+    try {
+      const response = await axios.post(`${Base_Url}/task/pending`, {}, {
+        withCredentials: true,
+      });
+      set({ tasks: response.data, loading: false });
+    } catch (err) {
+      set({ error: 'Failed to fetch tasks', loading: false });
+      console.error(err);
+    }
+  },
+  setTasks: (tasks: Task[]) => set({ tasks }),
+  setLoading: (loading: boolean) => set({ loading }),
+  setError: (error: string | null) => set({ error }),
+}));
 
-export default useTaskListStore;
+export default useTasksStore;

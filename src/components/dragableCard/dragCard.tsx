@@ -1,35 +1,36 @@
-import React, { useState, useRef, useEffect, MouseEvent } from 'react';
+import React, { useState, useEffect } from 'react';
 import './dragCard.styles.css';
-import { motion } from "framer-motion"
 import { Box, Grid } from '@mui/material';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import DeleteIcon from '@mui/icons-material/Delete';
+// Ensure this import path is correct
+ // Ensure this import path is correct
+
+ import axios from 'axios';
+ import { Base_Url } from '../../config/api.config';
+import { Task } from '../forground/Foreground';
+ 
+ export const updateTaskStatus = async (taskId: string) => {
+   try {
+     const response = await axios.patch(`${Base_Url}/tasks/${taskId}/status`, {
+       taskStatus: true,
+     }, {
+       withCredentials: true, // Include credentials if needed
+     });
+     return response.data;
+   } catch (error) {
+     console.error('Error updating task status:', error);
+     throw error;
+   }
+ };
+ 
 
 interface DragCardProps {
-  dragConstraintsRef: React.RefObject<HTMLDivElement>;
+  task: Task;
 }
 
-const DragCard: React.FC<DragCardProps> = ({ dragConstraintsRef }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
+const DragCard: React.FC<DragCardProps> = ({ task }) => {
   const [isDragging, setIsDragging] = useState(false);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-  const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
-    setIsDragging(true);
-    setOffset({
-      x: e.clientX - (cardRef.current?.offsetLeft || 0),
-      y: e.clientY - (cardRef.current?.offsetTop || 0),
-    });
-  };
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (isDragging && cardRef.current) {
-      const x = e.clientX - offset.x;
-      const y = e.clientY - offset.y;
-      cardRef.current.style.left = `${x}px`;
-      cardRef.current.style.top = `${y}px`;
-    }
-  };
 
   const handleMouseUp = () => {
     setIsDragging(false);
@@ -42,29 +43,39 @@ const DragCard: React.FC<DragCardProps> = ({ dragConstraintsRef }) => {
     };
   }, []);
 
+  const handleDoneClick = async () => {
+    try {
+      await updateTaskStatus(task.id);
+      // Optionally, update the local state or refetch tasks to reflect the change
+    } catch (error) {
+      console.error('Failed to update task status:', error);
+    }
+  };
+
   return (
-    <div  className="login-form-container" >
-      {/* <h2 className="login-form-title">Task Heading!dfgfhjkjkhchc dxhgddychkyf dfftstyddj </h2> */}
+    <div className="login-form-container">
       <form className="login-form">
         <div className="input-field">
           <Box className="input">
-          Task Heading!
+            {task.taskTitle}
           </Box>
           <div className="input-bottom-gradient" />
         </div>
         <Grid container>
           <Grid xs={1.5} className='clock'><AccessAlarmIcon /></Grid>
-          <Grid xs={9.5} display={'flex'} paddingTop={'3px'} className='time'> 7:30am-9:30am</Grid>
+          <Grid xs={9.5} display={'flex'} paddingTop={'3px'} className='time'>
+            {new Date(task.endTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+          </Grid>
           <Grid xs={1} className='delete'><DeleteIcon /></Grid>
         </Grid>
         <Grid container justifyContent={'space-between'}>
           <Grid xs={6} item>
-            <button className="button1" type="submit">
+            <button className="button1" type="button">
               More
             </button>
           </Grid>
           <Grid xs={6} item display={'flex'} justifyContent={'center'}>
-            <button className="button2" type="submit">
+            <button className="button2" type="button" onClick={handleDoneClick}>
               Done
             </button>
           </Grid>

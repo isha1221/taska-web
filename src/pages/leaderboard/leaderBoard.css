@@ -1,0 +1,19 @@
+
+.user_id_container{
+    border: 2px solid rgb(255,0,106);
+    width:50%;
+    padding: 5px;
+    border-radius: 15px;
+    /* background-color: rgb(255,0,106); */
+
+}
+
+@media (max-width: 576px) {
+   .user_id_box{
+    justify-content: center;
+   }
+   .list_heading{
+    font-size: 50px!important;
+   }
+  }
+

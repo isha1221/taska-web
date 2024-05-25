@@ -8,6 +8,8 @@ import Task from './pages/taskPage/Task';
 import Navbar from './components/Navbar/navbar';
 import Dashboard from './pages/dashboard/dashboard';
 import HomeLayout from './layouts/homeLayout/homeLayout';
+import Flame from './components/flame/flame';
+import LeaderBoard from './pages/leaderboard/leaderBoard';
 
 function App() {
   return (
@@ -20,9 +22,13 @@ function App() {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="friends" element={<FriendList />} />
             <Route path="dashboard" element={<Dashboard/>} />
+            <Route path="leaderboard" element={<LeaderBoard/>}/>
           </Route>
       </Routes>
     </BrowserRouter>
+
+    // <Flame></Flame>
+    // <LeaderBoard></LeaderBoard>
   );
 }
 

@@ -11,7 +11,7 @@ body {
 
 /* Form Container */
 .login-form-container {
-  width: auto;
+  width: 300px;
   margin: auto;
   padding: 10px 20px;
   position: relative;
@@ -23,7 +23,7 @@ body {
   border: 1px solid rgba(53, 53, 56, 0.3);
   color: var(--text-color);
   transition: all 0.3s;
-  z-index: 10;
+  /* z-index: 10; */
  border: 2px solid var(--primary-color);
  
 }

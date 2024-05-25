@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 const Task = () => {
     
   return (
-    <div className='relative w-full h-full '>
+    <div className='absolute w-full h-full z-[-10]'>
       
     <Background></Background>
     <Foreground></Foreground>

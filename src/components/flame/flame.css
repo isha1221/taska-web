@@ -1,0 +1,20 @@
+
+body{
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+}
+
+
+.flame{
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    border: 10px solid #ff006a ;
+    border-radius: 50%;
+    box-shadow: 0 0 30px #ff006a83,
+                0 0 50px #ff006a9a,
+                inset 0 0 30px #ff006a83,
+                inset  0 0 50px #ff006a9a;
+    filter:url(#wave);
+}

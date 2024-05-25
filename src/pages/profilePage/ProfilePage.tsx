@@ -7,7 +7,9 @@ import './profile.css';
 const ProfilePage = () => {
   return (
   <Grid xs={12} height={'100vh'}>
-    <Grid xs={12}  py={1} className='img_profile' ><Box display={'flex'} justifyContent={'center'}><Circle></Circle></Box></Grid>
+    <Grid xs={12}  py={1} className='img_profile' ><Box display={'flex'} justifyContent={'center'}>
+      <Circle></Circle>
+    </Box></Grid>
     <Grid xs={12} className='id_container' container >
     <Grid xs={6} display={'flex'} justifyContent={'center'} p={2}><Box className='id_box1'>User Name</Box></Grid>
     <Grid xs={6}  display={'flex'} justifyContent={'center'} p={2}><Box className='id_box2'>User ID</Box></Grid>

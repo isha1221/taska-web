@@ -3,18 +3,25 @@
   display: flex;
   justify-content: center;
   margin-top: 2vh;
-  
+  /* position: relative; */
+  margin-bottom: 12vh;
   }
  .navbar {
-  position: relative;
+  position:fixed;
   background-color: transparent;
   color: white;
   padding: 10px 20px;
   width: auto;
   transition: position 0.3s;
   border-radius:50px ;
-  border: 2px solid rgb(91, 89, 89);
+
+  background: rgba(53, 53, 56, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  border: 2px solid rgb(255,0,106);
   display: flex;
+ 
 }
 
 .navbar:hover{
@@ -56,27 +63,17 @@
 }
 
 .dropdown-menu {
-  position: absolute;
-  top: 50px; /* Adjust depending on navbar height */
+  position:absolute;
+  top: 50px;/* Adjust depending on navbar height */
   right: 0;
-  background-color: transparent;
+  /* background-color: transparent; */
   border: 2px solid rgb(255,0,106);
   z-index: 1001;
-  
   border-radius: 15px;
-  /* From https://css.glass */
-background: rgba(255, 0, 106, 0.2);
-
-
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-
+background-color:var(--background-color)
 
 }
 
-.dropdown-menu:hover{
-  border: 2px solid rgb(255,0,106);
-}
 
 .dropdown-menu ul {
   list-style-type: none;
@@ -91,10 +88,9 @@ backdrop-filter: blur(5px);
   padding: 5px 10px;
 }
 
-/* Add media query for mobile devices */
+
 @media (max-width: 768px) {
   .navbar {
-     /* Stack elements vertically */
     align-items: center; /* Center items */
     padding: -50px; /* Reduce padding */
   }

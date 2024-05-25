@@ -5,39 +5,20 @@ import Task from "../../pages/taskPage/Task";
 import routes from "../../routes";
 
 const Navbar: React.FC = () => {
-  const [isSticky, setIsSticky] = useState(false);
+ 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const handleScroll = () => {
-    const offset = 50;
-    if (window.scrollY > offset) {
-      setIsSticky(true);
-    } else {
-      setIsSticky(false);
-    }
-  };
+ 
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
-  const handleClickOutside = (event: MouseEvent) => {
-    if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-      setIsMenuOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+ 
 
   return (
     <div className="mainNav">
-      <nav className={`navbar ${isSticky ? "sticky" : ""}`}>
+      <nav className='navbar'>
         <ul className="navbar-links">
           <li>
             <Link to={routes.Dashboard}>
@@ -68,6 +49,10 @@ const Navbar: React.FC = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link to={routes.LeaderBoard} onClick={toggleMenu}>
+                    <a>Leader Board</a>
+                  </Link>
+                </li> <li>
                   <Link to={routes.Login} onClick={toggleMenu}>
                     <a>Logout</a>
                   </Link>

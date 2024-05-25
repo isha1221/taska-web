@@ -1,0 +1,32 @@
+.foreground-container {
+    position: relative;
+    /* top: -50%; */
+    margin-top: 20vh;
+    left: 0;
+    /* transform: translateY(-50%); */
+    /* z-index: 3; */
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20vh; /* Adjust as needed */
+  }
+  
+  .profile-img {
+    width: 200px; /* Fixed size */
+    height: 250px; /* Fixed size */
+    border-radius: 50%; /* Make it circular */
+    object-fit:fill; /* Ensure the image covers the container without distortion */
+  }
+  
+  /* body{
+    display: none !important;
+  } */
