@@ -1,0 +1,40 @@
+.arrow-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #ff006a; /* Purple background */
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.arrow-button:hover {
+  background: rgb(255, 0, 106);
+  background: -moz-linear-gradient(
+    126deg,
+    rgba(255, 0, 106, 1) 26%,
+    rgba(199, 58, 230, 1) 83%
+  );
+  background: -webkit-linear-gradient(
+    126deg,
+    rgba(255, 0, 106, 1) 26%,
+    rgba(199, 58, 230, 1) 83%
+  );
+  background: linear-gradient(
+    126deg,
+    rgba(255, 0, 106, 1) 26%,
+    rgba(199, 58, 230, 1) 83%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff006a",endColorstr="#c73ae6",GradientType=1); /* Hot pink on hover */
+}
+
+.arrow-icon {
+  margin-left: 8px; /* Space between text and icon */
+  width: 20px;
+  height: 20px;
+}

@@ -1,11 +1,17 @@
 import React from "react";
 import "./circle.css";
-import profile_img from "../../assets/img3.png";
 
-const Circle: React.FC = () => {
+const Circle: React.FC<{ imageUrl: string | null; alt?: string }> = ({
+  imageUrl,
+  alt,
+}) => {
   return (
     <div className="inner">
-      <img src={profile_img} alt="Profile" className="profile_img" />
+      <img
+        src={imageUrl || "/profile.png"}
+        alt={alt || "Profile"}
+        className="profile_img"
+      />
     </div>
   );
 };

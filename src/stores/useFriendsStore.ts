@@ -8,6 +8,7 @@ export interface FriendResponse {
   fullName: string;
   email: string;
   branch: string;
+  profile: string | null;
   rank: number;
 }
 export type FriendListResponseState = FriendResponse[];

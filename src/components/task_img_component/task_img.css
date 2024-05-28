@@ -1,11 +1,11 @@
 .card {
-  width: 100%;
+  width: 80%;
   height: 100%;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20%;
+  /* margin-right: 20%; */
 }
 
 .cover-image {
@@ -72,5 +72,9 @@
   filter: blur(6px);
 }
 
-@media screen {
+@media screen and (max-width: 600px) {
+  .card {
+    margin-right: 0;
+    width: 80%;
+  }
 }

@@ -96,7 +96,7 @@ const FriendList: React.FC = () => {
                     item
                   >
                     <img
-                      src={`https://img.icons8.com/fluency/96/docker.png`}
+                      src={friend.profile || "./profile.png"}
                       alt={friend.fullName}
                       style={{
                         borderRadius: "50%",

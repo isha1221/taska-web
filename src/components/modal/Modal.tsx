@@ -1,16 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from "dayjs";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import "./modal.css";
 import { Grid } from "@mui/material";
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateTimeField } from '@mui/x-date-pickers/DateTimeField';
-import axios from 'axios';
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateTimeField } from "@mui/x-date-pickers/DateTimeField";
+import axios from "axios";
 import { Base_Url } from "../../config/api.config";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Modal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+const Modal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
+  isOpen,
+  onClose,
+}) => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const toolbarOptions = [
@@ -42,26 +47,40 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onC
   }, [isOpen]);
 
   const handleSave = async () => {
-   
-
     try {
-      const response = await axios.post(`${Base_Url}/task`, {
-        taskTitle: title,
-        taskDescription: description,
-        startTime: startTime?.toDate(),
-        endTime: endTime?.toDate(),
-      },{
-        withCredentials:true
-      });
-      console.log('Task created:', response.data);
+      const response = await axios.post(
+        `${Base_Url}/task`,
+        {
+          taskTitle: title,
+          taskDescription: description,
+          startTime: startTime?.toDate(),
+          endTime: endTime?.toDate(),
+        },
+        {
+          withCredentials: true,
+        }
+      );
+
+      toast.success("Task created successfully!");
       onClose();
     } catch (error) {
-      console.error('Error creating task:', error);
+      toast.error(
+        <div>
+          Error creating task
+          <button
+            onClick={() => window.location.reload()}
+            className="toast-refresh-button"
+          >
+            Refresh
+          </button>
+        </div>
+      );
     }
   };
 
   return isOpen ? (
     <div className="modal-overlay">
+      <ToastContainer />
       <div className="modal">
         <div className="input-field">
           <input
@@ -89,7 +108,11 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onC
             />
           </LocalizationProvider>
         </div>
-        <Grid container justifyContent={"space-between"} sx={{ marginTop: '30px' }}>
+        <Grid
+          container
+          justifyContent={"space-between"}
+          sx={{ marginTop: "30px" }}
+        >
           <Grid xs={6} item>
             <button className="button1" type="button" onClick={onClose}>
               Close

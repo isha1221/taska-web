@@ -1,40 +1,41 @@
-import { useState } from 'react';
-import axios from 'axios'; // Import axios
-import { useNavigate } from 'react-router-dom'; // For redirection
-import './signupForm.styles.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { setCookie } from '../utils/cookies';
+import { useState } from "react";
+import axios from "axios"; // Import axios
+import { useNavigate } from "react-router-dom"; // For redirection
+import "./signupForm.styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { setCookie } from "../utils/cookies";
+import routes from "../../routes";
 
 export function SignupForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    username: '',
-    email: '',
-    branch: '',
-    bio: '',
+    name: "",
+    username: "",
+    email: "",
+    branch: "",
+    bio: "",
   });
-  
-  const [password, setPassword] = useState('');
+
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({
-    email: '',
+    email: "",
   });
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate(); // For redirection
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
 
-    if (name === 'email') {
+    if (name === "email") {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       setErrors((prevErrors) => ({
         ...prevErrors,
-        email: emailRegex.test(value) ? '' : 'Invalid email address.',
+        email: emailRegex.test(value) ? "" : "Invalid email address.",
       }));
     }
   };
@@ -56,41 +57,45 @@ export function SignupForm() {
     e.preventDefault();
 
     if (errors.email) {
-      setErrorMessage('Invalid email address.');
+      setErrorMessage("Invalid email address.");
       return;
     }
 
     if (!isPasswordValid(password)) {
-      setErrorMessage('Password must be at least 8 characters and contain alphanumeric and special characters.');
+      setErrorMessage(
+        "Password must be at least 8 characters and contain alphanumeric and special characters."
+      );
       return;
     }
 
-    setErrorMessage('');
+    setErrorMessage("");
 
     try {
       // Send the signup data to the backend
-      const response = await axios.post('https://tr0sfbtq-6969.inc1.devtunnels.ms/user/signup', {
-        username: formData.username,
-        fullName: formData.name, 
-        email: formData.email,
-        branch: formData.branch,
-        password,
-        bio: formData.bio,
-       
-      });
+      const response = await axios.post(
+        "https://tr0sfbtq-6969.inc1.devtunnels.ms/user/signup",
+        {
+          username: formData.username,
+          fullName: formData.name,
+          email: formData.email,
+          branch: formData.branch,
+          password,
+          bio: formData.bio,
+        }
+      );
 
-      setCookie(response.data.id)//cookies set
-      
-      navigate('/app/profile'); // Redirect to the profile page
+      setCookie(response.data.id); //cookies set
+
+      navigate(routes.Login); // Redirect to the profile page
     } catch (error: any) {
       if (error.response) {
         // Handle specific error messages from the backend
-        setErrorMessage(error.response.data.error || 'Signup failed');
+        setErrorMessage(error.response.data.error || "Signup failed");
       } else if (error.request) {
         // Handle network errors
-        setErrorMessage('Network error: Please check your connection.');
+        setErrorMessage("Network error: Please check your connection.");
       } else {
-        setErrorMessage('An error occurred: ' + error.message); // Other errors
+        setErrorMessage("An error occurred: " + error.message); // Other errors
       }
     }
   };
@@ -133,7 +138,7 @@ export function SignupForm() {
               type="email"
               placeholder="example@example.com"
               onChange={handleChange}
-              className={errors.email ? 'input-error' : ''}
+              className={errors.email ? "input-error" : ""}
             />
             {errors.email && (
               <span className="error-message">{errors.email}</span>
@@ -145,12 +150,12 @@ export function SignupForm() {
             <label htmlFor="password">Password</label>
             <input
               id="password"
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               placeholder="********"
               value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
-                setErrorMessage('');
+                setErrorMessage("");
               }}
             />
             <FontAwesomeIcon
@@ -166,17 +171,17 @@ export function SignupForm() {
 
           <div className="input-field">
             <label htmlFor="branch">Branch</label>
-            <select
-              id="branch"
-              name="branch"
-              onChange={handleChange}
-            >
+            <select id="branch" name="branch" onChange={handleChange}>
               <option value="" hidden>
                 Select your branch
               </option>
               <option value="computer-science">Computer Science</option>
-              <option value="electrical-engineering">Electrical Engineering</option>
-              <option value="mechanical-engineering">Mechanical Engineering</option>
+              <option value="electrical-engineering">
+                Electrical Engineering
+              </option>
+              <option value="mechanical-engineering">
+                Mechanical Engineering
+              </option>
               <option value="civil-engineering">Civil Engineering</option>
               <option value="business">Business</option>
             </select>
@@ -194,7 +199,9 @@ export function SignupForm() {
             />
             <div className="input-bottom-gradient" />
           </div>
-          {errorMessage && <span className="error-message">{errorMessage}</span>}
+          {errorMessage && (
+            <span className="error-message">{errorMessage}</span>
+          )}
           <button
             className="signup-form-button"
             type="submit"

@@ -22,26 +22,26 @@ import TaskImage from "./components/task_img_component/taskImage";
 
 function App() {
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/login" element={<LoginForm />} />
-    //     <Route path="/signup" element={<SignupForm />} />
-    //     <Route path="/app" element={<HomeLayout></HomeLayout>}>
-    //       <Route path="task" element={<Task />} index />
-    //       <Route path="profile" element={<ProfilePage />} />
-    //       <Route path="friends" element={<FriendList />} />
-    //       <Route path="dashboard" element={<Dashboard />} />
-    //       <Route path="leaderboard" element={<LeaderBoard />} />
-    //       <Route
-    //         path="taskDescription/:taskId"
-    //         element={<TaskDescription></TaskDescription>}
-    //       ></Route>
-    //     </Route>
-    //   </Routes>
-    // </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<SignupForm />} />
+        <Route path="/app" element={<HomeLayout></HomeLayout>}>
+          <Route path="task" element={<Task />} index />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="friends" element={<FriendList />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="leaderboard" element={<LeaderBoard />} />
+          <Route
+            path="taskDescription/:taskId"
+            element={<TaskDescription></TaskDescription>}
+          ></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
 
-    <Home></Home>
-    // <TaskImage></TaskImage>
+    // <TaskDescription></TaskDescription>
   );
 }
 

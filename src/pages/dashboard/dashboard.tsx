@@ -1,12 +1,42 @@
 import { CircularProgress, Grid, Typography } from "@mui/material";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 import "./dashboard.css";
 import Graph from "../../components/graph/Graph";
-import useUserStore from "../../stores/useUserStore";
-
-// import BasicLineChart from '../../components/graph/Graph'
+import useUserStore, { UserState } from "../../stores/useUserStore";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Base_Url } from "../../config/api.config";
 
 const Dashboard = () => {
-  const { user, loading, error } = useUserStore(); // Get user data from the store
+  const navigate = useNavigate(); // Initialize the navigate function
+  const { user, loading, error, setUser, setError, setLoading } =
+    useUserStore(); // Get user data from the store
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (!user) {
+          // Call the API to fetch user data if not available
+          const response = await axios.get(`${Base_Url}/getAuth`, {
+            withCredentials: true,
+          });
+          const userData: UserState = response.data;
+          console.log(userData);
+          setUser(userData);
+          setLoading(false);
+        }
+      } catch (error) {
+        toast.error("Failed to authenticate. Redirecting to login...");
+        setError(`${error}`);
+        setTimeout(() => {
+          navigate("/login"); // Use navigate to go to login page
+        }, 2000);
+      }
+    };
+
+    fetchData();
+  }, [user, navigate]);
 
   if (loading) {
     return <Typography>Loading...</Typography>;
@@ -17,7 +47,7 @@ const Dashboard = () => {
   }
 
   if (!user) {
-    return <Typography>No user data available</Typography>;
+    return null; // Wait for authentication
   }
 
   return (
@@ -56,9 +86,7 @@ const Dashboard = () => {
             alignItems={"center"}
             p={1}
           >
-            {/* <Grid xs={12} maxHeight={'1000px'} maxWidth={'1000px'}> */}
             <Graph></Graph>
-            {/* </Grid>   */}
           </Grid>
         </>
       )}

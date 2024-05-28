@@ -6,47 +6,74 @@ import "./leaderBoard.css";
 import { FriendResponse } from "../../stores/useFriendsStore";
 import { Base_Url } from "../../config/api.config";
 import useUserStore from "../../stores/useUserStore";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const LeaderBoard: React.FC = () => {
-  const { user, loading, error } = useUserStore(); // Get user data from the store
-
-  if (loading) {
-    return <Typography>Loading...</Typography>;
-  }
-
-  if (error) {
-    return <Typography>Error: {error}</Typography>;
-  }
-
-  if (!user) {
-    return <Typography>No user data available</Typography>;
-  }
+  const {
+    user,
+    loading: storeLoading,
+    error: storeError,
+    setUser,
+    setLoading,
+    setError,
+  } = useUserStore(); // Get user data from the store
 
   const [users, setUsers] = useState<FriendResponse[]>([]);
-  const [apiLoading, setapiLoading] = useState(true);
-  const [apiError, setapiError] = useState("");
+  const [apiLoading, setApiLoading] = useState(true);
+  const [apiError, setApiError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchData = async () => {
       try {
-        const response = await axios.post(
-          `${Base_Url}/users/rank`,
-          {},
-          {
-            withCredentials: true,
-          }
-        );
-        setUsers(response.data);
-      } catch (apiError) {
-        setapiError("Failed to fetch leaderboard data");
-        console.error(apiError);
+        setLoading(true);
+        // Call the API to fetch user data if not available
+        const response = await axios.get(`${Base_Url}/getAuth`, {
+          withCredentials: true,
+        });
+        const userData = response.data;
+        setUser(userData);
+      } catch (error) {
+        toast.error("Failed to fetch user data. Redirecting to login...");
+        setError(`${error}`);
+        setTimeout(() => {
+          navigate("/login"); // Navigate to the login page after displaying the error message
+        }, 2000); // Adjust the timeout as needed
       } finally {
-        setapiLoading(false);
+        setLoading(false);
       }
     };
 
-    fetchUsers();
-  }, []);
+    const fetchUsersRank = async () => {
+      try {
+        setApiLoading(true);
+        // Call the API to fetch leaderboard data
+        const response = await axios.post(
+          `${Base_Url}/users/rank`,
+          {},
+          { withCredentials: true }
+        );
+        const leaderboardData: FriendResponse[] = response.data;
+        setUsers(leaderboardData);
+      } catch (error) {
+        setApiError("Failed to fetch leaderboard data");
+        console.error(error);
+      } finally {
+        setApiLoading(false);
+      }
+    };
+
+    if (!user) {
+      fetchData();
+    }
+
+    fetchUsersRank();
+  }, [user, setUser, setError, setLoading]);
+
+  if (storeLoading || apiLoading) {
+    return <CircularProgress color="secondary" />;
+  }
 
   const renderStars = (rank: number) => {
     const starColor =
@@ -122,7 +149,7 @@ const LeaderBoard: React.FC = () => {
                 alignItems="center"
               >
                 <img
-                  // src={user.avatar}
+                  src={user.profile || "/profile.png"}
                   alt={user.username}
                   style={{
                     borderRadius: "50%",
@@ -198,7 +225,7 @@ const LeaderBoard: React.FC = () => {
           }}
         >
           {" "}
-          {user.fullName}: {user.rank}{" "}
+          {user?.fullName}: {user?.rank}{" "}
         </Typography>
       </Box>
     </Grid>

@@ -1,0 +1,80 @@
+.text_grid {
+  color: aliceblue;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.text1 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 3.5em;
+  font-weight: bold;
+}
+
+.text2 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5em;
+  /* font-weight: bolder; */
+}
+
+@media screen and (max-width: 600px) {
+  .text1 {
+    font-size: 1.5em;
+  }
+  .text2 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .text1 {
+    font-size: 2.5em;
+  }
+  .text2 {
+    font-size: 1.3em;
+  }
+}
+
+/* src/components/features/features.css */
+
+/* home.css */
+
+.features-container {
+  padding: 20px;
+  /* background-color: #f5f5f5; */
+  /* border-radius: 8px; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.feature h3 {
+  color: #ff006a;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  color: whitesmoke;
+  font-size: 1em;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .features-container {
+    padding: 10px;
+  }
+
+  .feature h3 {
+    font-size: 1.2em;
+  }
+
+  .feature p {
+    font-size: 0.9em;
+  }
+
+  .features-container {
+    margin-top: 20%;
+  }
+}

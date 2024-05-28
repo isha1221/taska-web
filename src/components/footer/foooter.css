@@ -1,0 +1,43 @@
+:root {
+  --dark-blue: #1c0c33;
+  --hot-pink: #fa243c;
+}
+
+.footer-container {
+  background-color: #00011c;
+  padding: 20px;
+  display: flex;
+  border-top: 2px solid rgb(255, 0, 106);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.footer {
+  position: relative;
+  padding: 20px 0;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.icon-wrapper {
+  margin: 0 15px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+}
