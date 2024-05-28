@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
-import FloatingActionButton from '../floatingActionButton/FloatingActionButton';
-import Modal from '../modal/Modal';
-import DragCard from '../dragableCard/dragCard';
-import useTasksStore from '../../stores/useTaskStore';
+import { useState, useEffect, useRef } from "react";
+import FloatingActionButton from "../floatingActionButton/FloatingActionButton";
+import Modal from "../modal/Modal";
+import DragCard from "../dragableCard/dragCard";
+import useTasksStore from "../../stores/useTaskStore";
+import { CircularProgress, Grid } from "@mui/material";
 
 // types.ts
 export interface Task {
@@ -34,13 +35,18 @@ const Foreground = () => {
   }, [fetchTasks]);
 
   return (
-    <div className='top-20 left-0 z-[1] w-full h-fit'>
+    <div className="top-20 left-0 z-[1] w-full h-fit">
       <FloatingActionButton onClick={openModal} />
       <Modal isOpen={isModalOpen} onClose={closeModal} />
       {loading ? (
-        <div className="flex justify-center items-center min-h-screen">
-          <div className="spinner"></div>
-        </div>
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          style={{ minHeight: "100vh" }}
+        >
+          <CircularProgress color="secondary" />
+        </Grid>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
           {tasks.map((task) => (

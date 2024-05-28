@@ -3,27 +3,24 @@ import './dragCard.styles.css';
 import { Box, Grid } from '@mui/material';
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import DeleteIcon from '@mui/icons-material/Delete';
-// Ensure this import path is correct
- // Ensure this import path is correct
-
- import axios from 'axios';
- import { Base_Url } from '../../config/api.config';
+import axios from 'axios';
+import { Base_Url } from '../../config/api.config';
 import { Task } from '../forground/Foreground';
- 
- export const updateTaskStatus = async (taskId: string) => {
-   try {
-     const response = await axios.patch(`${Base_Url}/tasks/${taskId}/status`, {
-       taskStatus: true,
-     }, {
-       withCredentials: true, // Include credentials if needed
-     });
-     return response.data;
-   } catch (error) {
-     console.error('Error updating task status:', error);
-     throw error;
-   }
- };
- 
+import { useNavigate } from 'react-router-dom';
+
+export const updateTaskStatus = async (taskId: string) => {
+  try {
+    const response = await axios.patch(`${Base_Url}/tasks/${taskId}/status`, {
+      taskStatus: true,
+    }, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error updating task status:', error);
+    throw error;
+  }
+};
 
 interface DragCardProps {
   task: Task;
@@ -31,6 +28,7 @@ interface DragCardProps {
 
 const DragCard: React.FC<DragCardProps> = ({ task }) => {
   const [isDragging, setIsDragging] = useState(false);
+  const navigate = useNavigate();
 
   const handleMouseUp = () => {
     setIsDragging(false);
@@ -46,10 +44,13 @@ const DragCard: React.FC<DragCardProps> = ({ task }) => {
   const handleDoneClick = async () => {
     try {
       await updateTaskStatus(task.id);
-      // Optionally, update the local state or refetch tasks to reflect the change
     } catch (error) {
       console.error('Failed to update task status:', error);
     }
+  };
+
+  const handleMoreClick = () => {
+    navigate(`/app/taskDescription/${task.id}`);
   };
 
   return (
@@ -70,7 +71,7 @@ const DragCard: React.FC<DragCardProps> = ({ task }) => {
         </Grid>
         <Grid container justifyContent={'space-between'}>
           <Grid xs={6} item>
-            <button className="button1" type="button">
+            <button className="button1" type="button" onClick={handleMoreClick}>
               More
             </button>
           </Grid>
