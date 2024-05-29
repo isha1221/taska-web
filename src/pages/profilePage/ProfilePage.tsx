@@ -82,7 +82,9 @@ const ProfilePage = () => {
             >
               BIO
             </Typography>
-            <h5>{user.bio}</h5>
+            <h5 style={{ paddingLeft: "25px", paddingRight: "25px" }}>
+              {user.bio}
+            </h5>
           </Box>
         </Grid>
       </>

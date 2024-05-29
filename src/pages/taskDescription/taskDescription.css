@@ -1,56 +1,48 @@
-.task-description-inner-container {
-  border-radius: 20px;
-  background: rgba(53, 53, 56, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  color: var(--text-color);
-  transition: all 0.3s;
-  z-index: -10;
-  width: 85%;
-  height: auto;
-  padding: 20px;
-  border: 2px solid #ed3ad8;
-  animation: pulse 2s infinite;
+/* taskDescription.css */
+
+.task-description-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 8px rgba(219, 0, 91, 0.634), inset 0 0 8px rgb(255, 0, 106);
-    border-color: rgba(219, 0, 91, 0.634);
-  }
-  50% {
-    box-shadow: 0 0 16px rgb(246, 30, 127), inset 0 0 14px rgb(240, 40, 140);
-    border-color: rgb(215, 25, 108);
-  }
-  100% {
-    box-shadow: 0 0 8px rgba(255, 0, 106, 0.73), inset 0 0 8px rgb(255, 0, 106);
-    border-color: rgba(255, 0, 106, 0.73);
-  }
-}
-
-.blob {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(180deg, var(--primary-color) 31.77%, #ed3ad8 100%);
-  mix-blend-mode: color-dodge;
-  transition: 1s cubic-bezier(0.07, 0.8, 0.16, 1);
-  transform: translate(0, 0) rotate(0deg);
-  border-radius: 50% 75% 50% 75% / 50% 50% 75% 75%;
-}
-
-.button1,
-.button2 {
+/* .task-description-inner-container {
   position: relative;
   width: 90%;
+  padding: 20px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+.task-description-inner-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/Group_10.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(20px);
+  z-index: -1;
+  border-radius: 25px;
+} */
+
+.btn1 {
+  position: relative;
+  width: 60%;
   padding: 10px;
+  margin-left: 20%;
   background: var(--background-color);
   color: var(--text-color);
   border-radius: 16px;
 }
 
-.button2:hover {
+.btn2:hover {
   background: rgba(255, 0, 106, 0.41);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -59,20 +51,26 @@
   border: 1px solid rgba(255, 0, 106, 0.3);
 }
 
-.button1:hover {
+.btn1:hover {
   border: 2px solid var(--primary-color);
 }
 
-/* Media Query for Small Screens */
-@media (max-width: 600px) {
-  .task-description-main {
-    padding: 0; /* Remove padding for small screens */
-  }
+.btn2 {
+  position: relative;
+  width: 60%;
+  margin-left: 20%;
+  padding: 10px;
+  background: var(--background-color);
+  color: var(--text-color);
+  border-radius: 16px;
+}
 
-  .task-description-inner-container {
-    width: 100%;
-    height: auto;
-    animation: none; /* Remove pulse animation */
-    border: none; /* Remove border */
-  }
+.task_container {
+  /* From https://css.glass */
+  background: rgba(9, 3, 74, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(255, 0, 106, 0.655);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 0, 106);
 }

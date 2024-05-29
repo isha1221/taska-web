@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { setCookie } from "../utils/cookies";
 import routes from "../../routes";
+import { Grid } from "@mui/material";
 
 export function SignupForm() {
   const [formData, setFormData] = useState({
@@ -22,7 +23,8 @@ export function SignupForm() {
     email: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate(); // For redirection
+  const navigate = useNavigate();
+  const sendto = () => navigate(routes.Login); // For redirection
 
   const handleChange = (e: { target: { name: any; value: any } }) => {
     const { name, value } = e.target;
@@ -210,6 +212,17 @@ export function SignupForm() {
             Sign Up
             <div className="button-bottom-gradient" />
           </button>
+          <Grid container>
+            <Grid
+              item
+              xs={12}
+              className="text"
+              display={"flex"}
+              justifyContent={"center"}
+            >
+              <h3 onClick={sendto}>Already have an account? Login</h3>
+            </Grid>
+          </Grid>
         </form>
       </div>
       <div className="blob"></div>

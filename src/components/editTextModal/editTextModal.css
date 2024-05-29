@@ -1,121 +1,164 @@
+/* Modal overlay */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    margin-top: 30px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-  }
-  
-  /* Modal styles */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(20px); /* Optional: blur the overlay itself */
+}
+
+/* Modal styles */
+.modal {
+  background: rgba(14, 14, 55, 0.44);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(14, 14, 55, 0.85);
+  color: var(--text-color);
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  height: auto;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Close button styles */
+.close-button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+/* Input field styles */
+.input-field {
+  margin-bottom: 20px;
+}
+
+/* Button styles */
+.button1,
+.button2 {
+  width: 90%;
+  padding: 10px;
+  background: var(--background-color);
+  color: var(--text-color);
+  border-radius: 16px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.button2:hover {
+  background: rgba(255, 0, 106, 0.41);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 0, 106, 0.3);
+}
+
+.button1:hover {
+  border: 2px solid var(--primary-color);
+}
+
+/* Main box styles */
+.main_box {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.main_box:hover,
+.ql-toolbar.ql-snow:hover {
+  border: 2px solid var(--primary-color);
+}
+
+/* Quill toolbar styles */
+.ql-toolbar.ql-snow {
+  color: #fff;
+}
+
+.ql-snow .ql-picker-label {
+  color: var(--primary-color);
+}
+
+.ql-snow .ql-toolbar button {
+  color: aqua;
+}
+
+.ql-snow .ql-toolbar button svg {
+  fill: aqua !important;
+}
+
+/* Date-time field styles */
+.date-time-field {
+  margin-top: 20px !important;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(14, 14, 55, 0.44);
+  color: var(--text-color);
+}
+
+.date-time-field input {
+  color: var(--text-color);
+}
+
+.date-time-field label {
+  color: var(--primary-color);
+}
+
+/* Input field styles */
+.input-field input,
+.input-field textarea {
+  border: none !important;
+}
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+  padding-right: 0 !important;
+}
+
+#title {
+  border: 2px solid whitesmoke !important;
+}
+
+#title:hover {
+  border: 2px solid var(--primary-color) !important;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
   .modal {
-    background: rgba(14, 14, 55, 0.44);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(14, 14, 55, 0.85);
-    color: var(--text-color);
-    padding: 20px;
-    width: 600px;
+    width: 90%;
     height: auto;
-    display: flex;
-    flex-direction: column;
   }
-  
-  /* Input field styles */
-  .input-field {
-    margin-bottom: 20px;
-  }
-  
-  /* Close button styles */
+
   .button1,
   .button2 {
-    position: relative;
-    width: 90%;
-    padding: 10px;
-    background: var(--background-color);
-    color: var(--text-color);
-    border-radius: 16px;
+    width: 100%;
   }
-  
-  .button2:hover {
-    background: rgba(255, 0, 106, 0.41);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 0, 106, 0.3);
-  }
-  
-  .button1:hover {
-    border: 2px solid var(--primary-color);
-  }
-  
-  .main_box {
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
-  }
-  
-  .main_box:hover,
-  .ql-toolbar.ql-snow:hover {
-    border: 2px solid var(--primary-color);
-  }
-  
-  .ql-toolbar.ql-snow {
-    color: #fff;
-  }
-  
-  .ql-snow .ql-picker-label {
-    color: var(--primary-color);
-  }
-  
-  .ql-snow .ql-toolbar button {
-    color: aqua;
-  }
-  
-  .ql-snow .ql-toolbar button svg {
-    fill: aqua !important;
-  }
-  
-  .date-time-field {
-    margin-top: 20px !important;
-   
-    padding: 10px;
-    border-radius: 8px;
-   
-    background: rgba(14, 14, 55, 0.44);
-    color: var(--text-color);
-  }
-  
-  .date-time-field input {
-    color: var(--text-color);
-  }
-  
-  .date-time-field label {
-    color: var(--primary-color);
-  }
-  .input-field input, .input-field textarea {
-  
-   border: none !important;
-  }
-  
-  .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
-    padding-right: 0 !important ;
-  }
-  
-  #title{
-    border: 2px solid whitesmoke !important;
-  }
-  
-  #title:hover{
-    border: 2px solid var(--primary-color) !important;
-  }
-  
-  
-  
-  
+}
+
+.date-time-field {
+  margin-top: 20px !important;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(14, 14, 55, 0.44);
+  color: var(--text-color);
+}
+
+.date-time-field input {
+  color: var(--text-color);
+}
+
+.date-time-field label {
+  color: var(--primary-color);
+}

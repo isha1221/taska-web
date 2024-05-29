@@ -225,7 +225,7 @@ const LeaderBoard: React.FC = () => {
           }}
         >
           {" "}
-          {user?.fullName}: {user?.rank}{" "}
+          You: {user?.rank}{" "}
         </Typography>
       </Box>
     </Grid>

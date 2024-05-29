@@ -1,18 +1,35 @@
 import React, { useState, useEffect, useRef } from "react";
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from "dayjs";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
-import './editTextModal.css'
+import "./editTextModal.css";
 import { Grid } from "@mui/material";
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateTimeField } from '@mui/x-date-pickers/DateTimeField';
-import axios from 'axios';
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateTimeField } from "@mui/x-date-pickers/DateTimeField";
+import axios from "axios";
 import { Base_Url } from "../../config/api.config";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+import routes from "../../routes";
 
-const EditModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+const EditTextModal: React.FC<{
+  isOpen: boolean;
+  onClose: () => void;
+  task: {
+    id: string;
+    taskTitle: string;
+    taskDescription: string;
+    startTime: string;
+    endTime: string;
+  };
+}> = ({ isOpen, onClose, task }) => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const [startTime, setStartTime] = useState<Dayjs | null>(null);
+  const [endTime, setEndTime] = useState<Dayjs | null>(null);
+
   const toolbarOptions = [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
     ["bold", "italic", "underline", "strike"],
@@ -22,46 +39,69 @@ const EditModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen,
   ];
 
   const quillRef = useRef<HTMLDivElement>(null);
-  const [startTime, setStartTime] = useState<Dayjs | null>(dayjs());
-  const [endTime, setEndTime] = useState<Dayjs | null>(dayjs());
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isOpen && quillRef.current) {
-      const quill = new Quill(quillRef.current, {
-        theme: "snow",
-        placeholder: "Write description...",
-        modules: {
-          toolbar: toolbarOptions,
-          syntax: true,
-        },
-      });
-      quill.on("text-change", () => {
-        setDescription(quill.root.innerHTML);
-      });
+    if (isOpen) {
+      setTitle(task.taskTitle);
+      setDescription(task.taskDescription);
+      setStartTime(dayjs(task.startTime));
+      setEndTime(dayjs(task.endTime));
+
+      if (quillRef.current) {
+        const quill = new Quill(quillRef.current, {
+          theme: "snow",
+          placeholder: "Write description...",
+          modules: {
+            toolbar: toolbarOptions,
+            syntax: true,
+          },
+        });
+        quill.root.innerHTML = task.taskDescription;
+        quill.on("text-change", () => {
+          setDescription(quill.root.innerHTML);
+        });
+      }
     }
-  }, [isOpen]);
+  }, [isOpen, task]);
 
   const handleSave = async () => {
-   
-
     try {
-      const response = await axios.post(`${Base_Url}/task`, {
-        taskTitle: title,
-        taskDescription: description,
-        startTime: startTime?.toDate(),
-        endTime: endTime?.toDate(),
-      },{
-        withCredentials:true
-      });
-      console.log('Task created:', response.data);
+      await axios.patch(
+        `${Base_Url}/task/${task.id}`,
+        {
+          taskTitle: title,
+          taskDescription: description,
+          startTime: startTime?.toDate(),
+          endTime: endTime?.toDate(),
+        },
+        {
+          withCredentials: true,
+        }
+      );
+
+      toast.success("Task updated successfully!");
       onClose();
+      navigate(routes.Task);
     } catch (error) {
-      console.error('Error creating task:', error);
+      toast.error(
+        <div>
+          Error updating task
+          <button
+            onClick={() => window.location.reload()}
+            className="toast-refresh-button"
+          >
+            Refresh
+          </button>
+        </div>
+      );
     }
   };
 
   return isOpen ? (
     <div className="modal-overlay">
+      <ToastContainer />
       <div className="modal">
         <div className="input-field">
           <input
@@ -89,7 +129,12 @@ const EditModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen,
             />
           </LocalizationProvider>
         </div>
-        <Grid container justifyContent={"space-between"} sx={{ marginTop: '30px' }}>
+
+        <Grid
+          container
+          justifyContent={"space-between"}
+          sx={{ marginTop: "30px" }}
+        >
           <Grid xs={6} item>
             <button className="button1" type="button" onClick={onClose}>
               Close
@@ -106,4 +151,4 @@ const EditModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen,
   ) : null;
 };
 
-export default EditModal;
+export default EditTextModal;

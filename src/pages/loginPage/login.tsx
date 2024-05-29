@@ -11,6 +11,7 @@ import "./login.styles.css";
 import { setCookie } from "../utils/cookies";
 import { Base_Url } from "../../config/api.config";
 import useUserStore, { UserState } from "../../stores/useUserStore";
+import routes from "../../routes";
 
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(true);
@@ -19,6 +20,7 @@ export function LoginForm() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false); // State for loading
   const navigate = useNavigate();
+  const sendTo = () => navigate(routes.SignUp);
 
   const setUser = useUserStore((state) => state.setUser);
   const setError = useUserStore((state) => state.setError);
@@ -67,7 +69,7 @@ export function LoginForm() {
       setCookie(userData.id);
       setUser(userData);
       setLoading(false); // Set loading state to false after successful login
-      navigate("/app/profile");
+      navigate("/app/task");
     } catch (error: any) {
       setLoading(false); // Set loading state to false if login fails
       if (error.response) {
@@ -144,7 +146,7 @@ export function LoginForm() {
                   display={"flex"}
                   justifyContent={"center"}
                 >
-                  <h3>Don't have an account? Sign Up</h3>
+                  <h3 onClick={sendTo}>Don't have an account? Sign Up</h3>
                 </Grid>
               </Grid>
             </>

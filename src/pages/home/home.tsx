@@ -17,6 +17,7 @@ const Home: React.FC = () => {
           container
           className="text_grid"
           p={"20px"}
+          paddingLeft={"7%"}
         >
           <Grid
             xs={12}

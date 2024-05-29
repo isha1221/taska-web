@@ -20,6 +20,7 @@
   position: absolute;
   width: 100%;
   z-index: -1;
+  border-radius: 20px;
 }
 
 .card:hover .wrapper {
@@ -70,11 +71,15 @@
 
 .card:hover .cover-image {
   filter: blur(6px);
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 600px) {
   .card {
     margin-right: 0;
     width: 80%;
+  }
+  .wrapper {
+    margin-top: 10%;
   }
 }
