@@ -75,7 +75,7 @@ export function SignupForm() {
 
     try {
       // Send the signup data to the backend
-      const response = await axios.post(`${Base_Url}/user/signup"`, {
+      const response = await axios.post(`${Base_Url}/user/signup`, {
         username: formData.username,
         fullName: formData.name,
         email: formData.email,
