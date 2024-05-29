@@ -7,6 +7,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { setCookie } from "../../utils/cookies";
 import routes from "../../routes";
 import { Grid } from "@mui/material";
+import { Base_Url } from "../../config/api.config";
 
 export function SignupForm() {
   const [formData, setFormData] = useState({
@@ -74,17 +75,14 @@ export function SignupForm() {
 
     try {
       // Send the signup data to the backend
-      const response = await axios.post(
-        "https://tr0sfbtq-6969.inc1.devtunnels.ms/user/signup",
-        {
-          username: formData.username,
-          fullName: formData.name,
-          email: formData.email,
-          branch: formData.branch,
-          password,
-          bio: formData.bio,
-        }
-      );
+      const response = await axios.post(`${Base_Url}/user/signup"`, {
+        username: formData.username,
+        fullName: formData.name,
+        email: formData.email,
+        branch: formData.branch,
+        password,
+        bio: formData.bio,
+      });
 
       setCookie(response.data.id); //cookies set
 
