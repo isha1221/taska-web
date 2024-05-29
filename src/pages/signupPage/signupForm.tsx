@@ -175,6 +175,9 @@ export function SignupForm() {
               <option value="" hidden>
                 Select your branch
               </option>
+              <option value="instrumentation">
+                Instrumentation and Control
+              </option>
               <option value="computer-science">Computer Science</option>
               <option value="electrical-engineering">
                 Electrical Engineering
@@ -182,7 +185,7 @@ export function SignupForm() {
               <option value="mechanical-engineering">
                 Mechanical Engineering
               </option>
-              <option value="civil-engineering">Civil Engineering</option>
+              <option value="chemical-engineering">Chemical Engineering</option>
               <option value="business">Business</option>
             </select>
             <div className="input-bottom-gradient" />
