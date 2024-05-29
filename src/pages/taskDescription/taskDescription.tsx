@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Box, Grid, Typography } from "@mui/material";
+import {Grid, Typography } from "@mui/material";
 import "./taskDescription.css";
-// import Modal from "../../components/modal/Modal";
 import useTasksStore from "../../stores/useTaskStore";
 import EditTextModal from "../../components/editTextModal/editTextModal";
 import routes from "../../routes";

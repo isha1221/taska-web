@@ -1,5 +1,3 @@
-import TaskDescription from "./pages/taskDescription/taskDescription";
-
 export default Object.freeze({
   Task: "/app/task",
   Home: "/",

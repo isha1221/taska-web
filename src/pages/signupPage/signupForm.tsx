@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"; // For redirection
 import "./signupForm.styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { setCookie } from "../utils/cookies";
+import { setCookie } from "../../utils/cookies";
 import routes from "../../routes";
 import { Grid } from "@mui/material";
 

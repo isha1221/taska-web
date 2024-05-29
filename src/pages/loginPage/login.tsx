@@ -6,9 +6,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import "./login.styles.css";
-import { setCookie } from "../utils/cookies";
+import { setCookie } from "../../utils/cookies";
 import { Base_Url } from "../../config/api.config";
 import useUserStore, { UserState } from "../../stores/useUserStore";
 import routes from "../../routes";

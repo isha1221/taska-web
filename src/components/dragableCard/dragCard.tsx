@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./dragCard.styles.css";
 import { Box, Grid } from "@mui/material";
 import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
@@ -38,19 +38,8 @@ const DragCard: React.FC<DragCardProps> = ({ task }) => {
     const storedIsTaskDone = localStorage.getItem(`task_${task.id}_done`);
     return storedIsTaskDone ? JSON.parse(storedIsTaskDone) : false;
   });
-  const [isDragging, setIsDragging] = useState(false);
+
   const navigate = useNavigate();
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  useEffect(() => {
-    document.addEventListener("mouseup", handleMouseUp);
-    return () => {
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, []);
 
   const handleDoneClick = async () => {
     try {

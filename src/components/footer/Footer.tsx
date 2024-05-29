@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import githubIcon from "../../image/icons8-github-24.png";
-import linkedinIcon from "../../image/linkedin.svg";
-import callIcon from "../../image/icons8-phone-50.png";
-import mailIcon from "../../image/icons8-mail-24.png";
+import githubIcon from "/icons8-github-24.png";
+import linkedinIcon from "/linkedin.svg";
+import callIcon from "/icons8-phone-50.png";
+import mailIcon from "/icons8-mail-24.png";
 import { Grid } from "@mui/material";
 import "./foooter.css";
 

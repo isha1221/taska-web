@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
         <ul className="navbar-links">
           <li>
             <Link to={routes.Dashboard}>
-              <a>Home</a>
+              <a>Dashboard</a>
             </Link>
           </li>
           <li>

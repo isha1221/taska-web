@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import FloatingActionButton from "../floatingActionButton/FloatingActionButton";
 import Modal from "../modal/Modal";
 import DragCard from "../dragableCard/dragCard";
@@ -19,7 +19,6 @@ export interface Task {
 
 const Foreground = () => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const dragConstraintsRef = useRef(null);
 
   // Retrieve state and actions from the Zustand store
   const tasks = useTasksStore((state) => state.tasks);
@@ -35,7 +34,7 @@ const Foreground = () => {
   }, [fetchTasks]);
 
   return (
-    <div className="top-20 left-0 z-[1] w-full h-fit">
+    <div className="top-20 left-0 z-[1] w-full h-full">
       <FloatingActionButton onClick={openModal} />
       <Modal isOpen={isModalOpen} onClose={closeModal} />
       {loading ? (

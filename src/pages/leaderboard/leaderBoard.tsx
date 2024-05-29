@@ -13,7 +13,6 @@ const LeaderBoard: React.FC = () => {
   const {
     user,
     loading: storeLoading,
-    error: storeError,
     setUser,
     setLoading,
     setError,

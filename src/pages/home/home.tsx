@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import "./home.css"; // Ensure this CSS file is imported
 import TaskImage from "../../components/task_img_component/taskImage";

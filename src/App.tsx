@@ -1,24 +1,15 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import ProfilePage from "./pages/profilePage/ProfilePage";
 import FriendList from "./pages/friendListPage/friend_list";
 import { LoginForm } from "./pages/loginPage/login";
 import { SignupForm } from "./pages/signupPage/signupForm";
 import Task from "./pages/taskPage/Task";
-import Navbar from "./components/Navbar/navbar";
 import Dashboard from "./pages/dashboard/dashboard";
 import HomeLayout from "./layouts/homeLayout/homeLayout";
-import Flame from "./components/flame/flame";
 import LeaderBoard from "./pages/leaderboard/leaderBoard";
 import TaskDescription from "./pages/taskDescription/taskDescription";
 import Home from "./pages/home/home";
-import DragCard from "./components/dragableCard/dragCard";
-import TaskImage from "./components/task_img_component/taskImage";
 
 function App() {
   return (
@@ -40,8 +31,6 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-
-    // <TaskDescription></TaskDescription>
   );
 }
 

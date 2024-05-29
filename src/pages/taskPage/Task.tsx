@@ -1,19 +1,13 @@
-import Background from '../../components/taskBackground/Background'
-import Foreground from '../../components/forground/Foreground'
-import { Outlet } from 'react-router-dom'
-
+import Background from "../../components/taskBackground/Background";
+import Foreground from "../../components/forground/Foreground";
 
 const Task = () => {
-    
   return (
-    <div className='absolute w-full h-full z-[-10]'>
-      
-    <Background></Background>
-    <Foreground></Foreground>
-   
+    <div className="absolute w-full h-full z-[-10] bg-slate-950">
+      <Background></Background>
+      <Foreground></Foreground>
+    </div>
+  );
+};
 
-</div>
-  )
-}
-
-export default Task
+export default Task;

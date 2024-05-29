@@ -1,18 +1,10 @@
-
-
-  
-   .searchBar {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 50px;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    transition: border-color 0.3s;
-    border:2px solid var(--primary-color);
-    width: 70%;
-
-
-  } 
-  
- 
-  
+.searchBar {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: border-color 0.3s;
+  border: 2px solid var(--primary-color);
+  width: 70%;
+}

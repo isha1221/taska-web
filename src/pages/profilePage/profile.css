@@ -1,34 +1,28 @@
+.id_box1,
+.id_box2,
+.id_box3 {
+  position: relative;
+  width: 100%;
+  padding: 10px;
 
+  background: var(--background-color);
+  color: var(--text-color);
 
-.id_box1, .id_box2,  .id_box3{
-    position: relative;
-    width: 100%;
-    padding: 10px;
-    
-    background: var(--background-color);
-    color: var(--text-color);
-    
-    border-radius: 16px;
-    display: flex;
-    justify-content: center;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
   border: 2px solid var(--primary-color);
-   }
-  
-   .boi_container{
+}
 
-    border-radius: 25px;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    border: 2px solid var(--primary-color);
-    min-height: 30vh;
+.boi_container {
+  border-radius: 25px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 2px solid var(--primary-color);
+  min-height: 30vh;
   padding: 5px;
-   }
+}
 
-    h3:hover{
-    color: var(--primary-color);
-
-   }
-   
-   /* .img_profile:hover{
-      background-color: rgb(1, 0, 17);
-   } */
+h3:hover {
+  color: var(--primary-color);
+}

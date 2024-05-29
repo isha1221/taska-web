@@ -8,7 +8,7 @@
   position: fixed;
   background-color: transparent;
   color: white;
-  padding: 10px 20px;
+  padding: 10px 0px;
   width: auto;
   transition: position 0.3s;
   border-radius: 50px;
@@ -82,7 +82,7 @@
 @media (max-width: 768px) {
   .navbar {
     align-items: center; /* Center items */
-    padding: -50px; /* Reduce padding */
+    padding: -70px; /* Reduce padding */
   }
 
   .navbar-links {

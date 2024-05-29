@@ -7,31 +7,6 @@
   height: 100vh;
 }
 
-/* .task-description-inner-container {
-  position: relative;
-  width: 90%;
-  padding: 20px;
-  border-radius: 25px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-}
-
-.task-description-inner-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url("/Group_10.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(20px);
-  z-index: -1;
-  border-radius: 25px;
-} */
-
 .btn1 {
   position: relative;
   width: 60%;
@@ -66,7 +41,6 @@
 }
 
 .task_container {
-  /* From https://css.glass */
   background: rgba(9, 3, 74, 0.2);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(255, 0, 106, 0.655);

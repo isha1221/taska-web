@@ -48,7 +48,7 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
 
   const handleSave = async () => {
     try {
-      const response = await axios.post(
+      await axios.post(
         `${Base_Url}/task`,
         {
           taskTitle: title,
