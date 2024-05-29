@@ -75,8 +75,8 @@ const Dashboard = () => {
             justifyContent={"center"}
             alignItems={"center"}
           >
-            <Typography variant="h3" className="title">
-              Rank: {user.rank}
+            <Typography variant="h3" className="rank">
+              Rank:{user.rank}
             </Typography>
           </Grid>
           <Grid
