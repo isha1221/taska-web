@@ -5,7 +5,6 @@ import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import axios from "axios";
 import { Base_Url } from "../../config/api.config";
 import useFriensListStore from "../../stores/useFriendsStore";
-import { getCookie } from "../../utils/cookies";
 
 // Main FriendList component with a search bar
 const FriendList: React.FC = () => {
@@ -23,12 +22,9 @@ const FriendList: React.FC = () => {
     setLoading(true);
     const fetchFriends = async () => {
       try {
-        const userId = getCookie("userId"); // Replace with the actual user ID you want to fetch friends for
         const response = await axios.post(
           `${Base_Url}/friendlist`,
-          {
-            userId,
-          },
+          {},
           {
             withCredentials: true, // If you need to include credentials
           }
